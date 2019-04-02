@@ -1,0 +1,10 @@
+docker stop demo-customer
+docker rm demo-customer
+docker stop demo-product
+docker rm demo-product
+docker stop demo-purchase
+docker rm demo-purchase
+docker stop demo-notificationservice
+docker rm demo-notificationservice
+docker stop demo-notificationdispatcher
+docker rm demo-notificationdispatcher

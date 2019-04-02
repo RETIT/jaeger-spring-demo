@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Notification Service</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body ng-app="notification-service">
+<hr/>
+<div class="container" ng-controller="NotificationController">
+    <h1>Letter service</h1>
+    <div style="float: left; width: 100%; margin-bottom: 4em">
+        <div style="float:left; width: 50%;">
+            <p>Dispatch letters to customers who purchased these products.</p>
+            <div ng-repeat="product in products">
+                <button ng-click="sendNotification(product.id)" style="margin: 0.2em; width: 50%;">{{product.name}}</button>
+            </div>
+        </div>
+        <div style="float: right; width:50%;">
+            <label for="notificationtext">Type letter text here:</label><br>
+            <textarea ng-model="notificationText" id="notificationtext" style="width: 100%; height: 7em;"></textarea>
+        </div>
+    </div>
+
+    <div ng-repeat="notification in notifications track by $index">
+        <div style="font-weight: bold">Dispatching letter to: {{notification.notifiedAddress.firstname}} {{notification.notifiedAddress.surname}}, {{notification.notifiedAddress.street}} {{notification.notifiedAddress.streetno}}{{notification.notifiedAddress.addition}}, {{notification.notifiedAddress.zip}} {{notification.notifiedAddress.city}}</div>
+        <div>Letter dispatching took: {{notification.duration}}s</div>
+        <div>message: {{notification.message}}</div>
+    </div>
+</div>
+</body>
+<script src="angular.min.js"></script>
+<script src="app.js"></script>
+<script src="NotificationController.js"></script>
+</html>
