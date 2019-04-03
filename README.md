@@ -1,6 +1,6 @@
 # Demo Letter Service
 
-A set of Java based demo micro services for demonstrating Opentracing with Jaeger. Simulate dispatching of letters through a web UI to all customers who purchased a product and find bottlenecks in the application using the traces.
+A demo application comprised of a set of Java/Spring based micro services, demonstrating Opentracing with Jaeger. Simulate dispatching of letters through a web UI to all customers who purchased a certain product and find bottlenecks in the application using the collected traces.
 
 The services are built using Spring boot and instrumented using Jaeger's Opentracing implementation through the [spring web starter](https://github.com/opentracing-contrib/java-spring-jaeger "Spring web starter github repo") contribution.  
 
