@@ -18,16 +18,7 @@ First, create the docker "demo_network":
 
 Run the all-in-one Jagertracing docker container in the "demo_network" (refer to [Jaeger documentation](https://www.jaegertracing.io/docs/1.8/getting-started "Jaeger documentation") for more details):
 
-    docker run -d --name jaeger \
-        -e COLLECTOR_ZIPKIN_HTTP_PORT=9411 \
-        -p 5775:5775/udp -p 6831:6831/udp \
-        -p 6832:6832/udp \
-        -p 5778:5778 \
-        -p 16686:16686 \
-        -p 14268:14268 \
-        -p 9411:9411 \
-        --network="demo_network" \
-        jaegertracing/all-in-one:1.10
+    docker run -d --name jaeger -e COLLECTOR_ZIPKIN_HTTP_PORT=9411 -p 5775:5775/udp -p 6831:6831/udp -p 6832:6832/udp -p 5778:5778 -p 16686:16686 -p 14268:14268 -p 9411:9411 --network="demo_network" jaegertracing/all-in-one:1.10
     
 The Jaeger UI may be accessed on [http://localhost:16686](http://localhost:16686/ "Jaeger UI").
 
@@ -42,6 +33,7 @@ In order to stop the applications and delete the containers, run:
 
      .\stopContainers.bat (./stopContainers.sh)
      
-And if you want to stop the all-in-one Jaeger:
+Commands for stopping the all-in-one Jaeger container and removing the network:
 
      docker stop jaeger
+     docker network rm demo_network
