@@ -17,7 +17,7 @@ public class DemoDispatcherWorker {
      * Do dummy "work" to simulate some processing between 200ms and 250ms.
      */
     public void sendLetter(String message, PostalAddress address) {
-        try(Scope scope = tracer.buildSpan("asdf").startActive(true)) {
+        try(Scope scope = tracer.buildSpan("sendLetter").startActive(true)) {
             scope.span().log("Sending letter to " + address);
             Thread.sleep((random.nextInt(50) + 200));
             scope.span().log("Letter was sent.");

@@ -12,31 +12,16 @@ import java.util.Random;
 @RestController
 public class CustomerController {
 
-    private static final Random random = new Random();
-
     @Autowired
-    CustomerRepository customerRepository;
+    CustomerWorker customerWorker;
 
     @GetMapping("/customer/{id}")
     public Customer getCustomer(@PathVariable Long id) throws CustomerNotFoundException {
-        Optional<Customer> customer = customerRepository.findById(id);
-        if(customer.isPresent()) {
-            return customer.get();
-        }
-        else {
-            throw new CustomerNotFoundException();
-        }
+        return customerWorker.loadSingleCustomer(id);
     }
 
     @GetMapping("customers/{ids}")
     public List<Customer> getCustomers(@PathVariable List<Long> ids) {
-        List<Customer> customers = customerRepository.findAllById(ids);
-        // delay between 150 and 250ms
-        try {
-            Thread.sleep(random.nextInt(100) + 150);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        return customers;
+        return customerWorker.loadCustomers(ids);
     }
 }

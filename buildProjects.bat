@@ -1,5 +1,5 @@
-call mvn -f customer clean install
-call mvn -f product clean install
-call mvn -f purchase clean install
-call mvn -f notificationservice clean install
-call mvn -f notificationdispatcher clean install
+call mvn -f customer clean install -DskipTests
+call mvn -f product clean install -DskipTests
+call mvn -f purchase clean install -DskipTests
+call mvn -f notificationservice clean install -DskipTests
+call mvn -f notificationdispatcher clean install -DskipTests

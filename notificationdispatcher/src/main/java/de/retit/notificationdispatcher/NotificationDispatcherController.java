@@ -11,7 +11,7 @@ public class NotificationDispatcherController {
     DemoDispatcherWorker dispatcherWorker;
 
     @PostMapping("/dispatch")
-    public void getPurchase(@RequestBody Notification notification) {
+    public void dispatch(@RequestBody Notification notification) {
         notification.getPostalAddresses().forEach(a -> dispatcherWorker.sendLetter(notification.getMessage(), a));
     }
 }

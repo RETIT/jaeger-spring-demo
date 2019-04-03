@@ -1,5 +1,3 @@
-docker network create --driver bridge demo_network
-
 docker build -t demo-notificationservice .\notificationservice
 docker create -p 8080:8080 --name demo-notificationservice --network demo_network --hostname demo-notificationservice demo-notificationservice
 
